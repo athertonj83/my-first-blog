@@ -1,22 +1,13 @@
-<html>
-    <head>
-        <title>Jen's blog</title>
-    </head>
-    <body>
-        <h1>This is a heading</h1>
-        {% for post in posts %}
-            <div>
-                <p>published: {{ post.published_date }}</p>
-                <h1><a href="">{{ post.title }}</a></h1>
-                <p>{{ post.text|linebreaksbr }}</p>
+{% extends 'blog/base.html' %}
+
+{% block content %}
+    {% for post in posts %}
+        <div class="post">
+            <div class="date">
+                {{ post.published_date }}
             </div>
-        {% endfor %}
-        <h2>This is a sub heading</h2>
-        <h3>This is a sub sub heading</h3>
-        <p>Hi there!</p>
-        <p>It works!</p>
-        <p>This is how to <em>emphasise</em> text</p>
-        <p>This is how to <strong>strongly emphasise</strong> the text</p>
-        <p>This will go to <br> another line</p>
-    </body>
-</html>
+            <h1><a href="{% url 'post_detail' pk=post.pk %}">{{ post.title }}</a></h1>
+            <p>{{ post.text|linebreaksbr }}</p>
+        </div>
+    {% endfor %}
+{% endblock %}
