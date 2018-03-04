@@ -4,6 +4,13 @@
     </head>
     <body>
         <h1>This is a heading</h1>
+        {% for post in posts %}
+            <div>
+                <p>published: {{ post.published_date }}</p>
+                <h1><a href="">{{ post.title }}</a></h1>
+                <p>{{ post.text|linebreaksbr }}</p>
+            </div>
+        {% endfor %}
         <h2>This is a sub heading</h2>
         <h3>This is a sub sub heading</h3>
         <p>Hi there!</p>
